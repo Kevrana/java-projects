@@ -8,6 +8,13 @@ This is a simple calculator application built using Java Swing. It features a us
 - Square root function
 - All Clear (AC) functions
 
+### How to Run:
+
+1. Make sure you have Java installed on your system.
+2. Clone the repository or download the source code.
+3. Compile the Java files using `javac`.
+4. Run the application class using `java`.
+
 ### Usage:
 
 1. Run the `Calculator` class to launch the application.
