@@ -60,6 +60,38 @@ public class TicTacToe {
         // add the game panel to the frame
         frame.add(gamePanel);
 
+        // Set the properties of the score label
+        scoreLabel.setBackground(Color.darkGray);
+        scoreLabel.setForeground(Color.white);
+        scoreLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        scoreLabel.setHorizontalAlignment(JLabel.CENTER);
+        scoreLabel.setText("Player X: " + playerXScore + " | Player O: " + playerOScore);
+        scoreLabel.setOpaque(true);
+
+        // Add the score label to the score panel and the score panel to the bottom
+        // panel
+        scorePanel.setLayout(new BorderLayout());
+        scorePanel.add(scoreLabel);
+        bottomPanel.add(scorePanel);
+
+        // Set the properties of the restart button
+        restartButton.setBackground(Color.green);
+        restartButton.setForeground(Color.black);
+        restartButton.setFont(new Font("Arial", Font.BOLD, 20));
+        restartButton.setHorizontalAlignment(JLabel.CENTER);
+        restartButton.setText("Restart");
+        restartButton.setFocusable(false);
+
+        // add the restart button to the restart panel and the restart panel to the
+        // bottom panel
+        restartPanel.setLayout(new BorderLayout());
+        restartPanel.add(restartButton);
+        bottomPanel.add(restartPanel);
+
+        // Add the bottom panel to the frame
+        frame.add(bottomPanel, BorderLayout.SOUTH);
+
+        // Initialize the game board
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 JButton tile = new JButton();
@@ -94,38 +126,7 @@ public class TicTacToe {
             }
         }
 
-        // Set the properties of the score label
-        scoreLabel.setBackground(Color.darkGray);
-        scoreLabel.setForeground(Color.white);
-        scoreLabel.setFont(new Font("Arial", Font.BOLD, 20));
-        scoreLabel.setHorizontalAlignment(JLabel.CENTER);
-        scoreLabel.setText("Player X: " + playerXScore + " | Player O: " + playerOScore);
-        scoreLabel.setOpaque(true);
-
-        // Add the score label to the score panel and the score panel to the bottom
-        // panel
-        scorePanel.setLayout(new BorderLayout());
-        scorePanel.add(scoreLabel);
-        bottomPanel.add(scorePanel);
-
-        // Set the properties of the restart button
-        restartButton.setBackground(Color.green);
-        restartButton.setForeground(Color.black);
-        restartButton.setFont(new Font("Arial", Font.BOLD, 20));
-        restartButton.setHorizontalAlignment(JLabel.CENTER);
-        restartButton.setText("Restart");
-        restartButton.setFocusable(false);
-
-        // add the restart button to the restart panel and the restart panel to the
-        // bottom panel
-        restartPanel.setLayout(new BorderLayout());
-        restartPanel.add(restartButton);
-        bottomPanel.add(restartPanel);
-
-        // Add the bottom panel to the frame
-        frame.add(bottomPanel, BorderLayout.SOUTH);
-
-        // Add an action listener to the restart button
+        // Add an action listener to the restart button to reset the game
         restartButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Reset the game
@@ -161,6 +162,7 @@ public class TicTacToe {
                 for (int i = 0; i < 3; i++) {
                     setWinner(board[row][i]);
                 }
+                updateScore(currentPlayer);
                 gameOver = true;
                 return;
             }
@@ -177,6 +179,7 @@ public class TicTacToe {
                 for (int i = 0; i < 3; i++) {
                     setWinner(board[i][col]);
                 }
+                updateScore(currentPlayer);
                 gameOver = true;
                 textLabel.setText("Game Over! " + currentPlayer + " wins!");
                 return;
@@ -197,6 +200,7 @@ public class TicTacToe {
             for (int i = 0; i < 3; i++) {
                 setWinner(board[i][2 - i]);
             }
+            updateScore(currentPlayer);
             gameOver = true;
             textLabel.setText("Game Over! " + currentPlayer + " wins!");
             return;
@@ -234,6 +238,6 @@ public class TicTacToe {
         } else if (winner == PLAYER_O) {
             playerOScore++;
         }
-        scoreLabel.setText("X: " + playerXScore + " O: " + playerOScore);
+        scoreLabel.setText("Player X: " + playerXScore + " | Player O: " + playerOScore);
     }
 }
