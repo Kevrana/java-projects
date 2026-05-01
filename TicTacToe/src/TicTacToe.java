@@ -41,7 +41,7 @@ public class TicTacToe {
         frame.setLayout(new BorderLayout());
 
         // Set the properties of the text label
-        textLabel.setBackground(Color.darkGray);
+        textLabel.setBackground(Color.black);
         textLabel.setForeground(Color.white);
         textLabel.setFont(new Font("Arial", Font.BOLD, 50));
         textLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -60,9 +60,11 @@ public class TicTacToe {
         // add the game panel to the frame
         frame.add(gamePanel);
 
+        bottomPanel.setLayout(new GridLayout(1, 2));
+
         // Set the properties of the score label
-        scoreLabel.setBackground(Color.darkGray);
-        scoreLabel.setForeground(Color.white);
+        scoreLabel.setBackground(Color.black);
+        scoreLabel.setForeground(Color.red);
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 20));
         scoreLabel.setHorizontalAlignment(JLabel.CENTER);
         scoreLabel.setText("Player X: " + playerXScore + " | Player O: " + playerOScore);

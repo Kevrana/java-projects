@@ -7,6 +7,8 @@ A simple implementation of the classic Tic Tac Toe game in Java.
 - Classic Tic Tac Toe gameplay
 - Score tracking for two players
 - Restart functionality
+- Visual feedback for game events such as wins and ties.
+- A clean and modern user interface.
 
 # How to Play
 
