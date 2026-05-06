@@ -66,27 +66,32 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
     public void draw(Graphics g) {
 
         // grid
-        Color gridColor = new Color(5, 5, 5); // dark gray
-        g.setColor(gridColor);
-        for (int i = 0; i < boardWidth / tileSize; i++) {
-            // Draw vertical lines
-            g.drawLine(i * tileSize, 0, i * tileSize, boardHeight);
-            // Draw horizontal lines
-            g.drawLine(0, i * tileSize, boardWidth, i * tileSize);
-        }
+        // Color gridColor = new Color(5, 5, 5); // dark gray
+        // g.setColor(gridColor);
+        // for (int i = 0; i < boardWidth / tileSize; i++) {
+        // // Draw vertical lines
+        // g.drawLine(i * tileSize, 0, i * tileSize, boardHeight);
+        // // Draw horizontal lines
+        // g.drawLine(0, i * tileSize, boardWidth, i * tileSize);
+        // }
 
         // food
         g.setColor(Color.RED);
-        g.fillRect(snakeFood.x * tileSize, snakeFood.y * tileSize, tileSize, tileSize);
+        // g.fillRect(snakeFood.x * tileSize, snakeFood.y * tileSize, tileSize,
+        // tileSize);
+        g.fill3DRect(snakeFood.x * tileSize, snakeFood.y * tileSize, tileSize, tileSize, true);
 
         // snake head
         g.setColor(Color.GREEN);
-        g.fillRect(snakeHead.x * tileSize, snakeHead.y * tileSize, tileSize, tileSize);
+        // g.fillRect(snakeHead.x * tileSize, snakeHead.y * tileSize, tileSize,
+        // tileSize);
+        g.fill3DRect(snakeHead.x * tileSize, snakeHead.y * tileSize, tileSize, tileSize, true);
 
         // snake body
         for (int i = 0; i < snakeBody.size(); i++) {
             Tile snakePart = snakeBody.get(i);
             g.fillRect(snakePart.x * tileSize, snakePart.y * tileSize, tileSize, tileSize);
+            g.fill3DRect(snakePart.x * tileSize, snakePart.y * tileSize, tileSize, tileSize, true);
         }
 
         // score
@@ -184,6 +189,13 @@ public class SnakeGame extends JPanel implements ActionListener, KeyListener {
         } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && velocityX != -1) {
             velocityX = 1;
             velocityY = 0;
+        } else if (e.getKeyCode() == KeyEvent.VK_P) {
+            // Pause the game
+            if (gameLoop.isRunning()) {
+                gameLoop.stop();
+            } else {
+                gameLoop.start();
+            }
         }
 
     }
